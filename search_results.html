@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: khaki;
+}
+* {box-sizing: border-box}
+input[type=text] {
+   width: 100%;
+   font-size: 28px;
+   padding: 15px;
+   margin: 5px 0 22px 0;
+   display: inline-block;
+   border: none;
+   background: #f1f1f1;
+}
+label{
+   font-size: 15px;
+}
+input[type=text]:focus {
+   background-color: #ddd;
+   outline: none;
+}
+hr {
+   border: 1px solid #f1f1f1;
+   margin-bottom: 25px;
+}
+button {
+   font-size: 18px;
+   font-weight: bold;
+   background-color: rgb(10, 119, 13);
+   color: white;
+   padding: 14px 20px;
+   margin: 8px 0;
+   border: none;
+   cursor: pointer;
+   width: 100%;
+   opacity: 0.9;
+}
+button:hover {
+   opacity:1;
+}
+.cancel {
+   padding: 14px 20px;
+   background-color: #ff3d2f;
+}
+.formContainer {
+   padding: 16px;
+}
+.formContainer p{
+   font-size: 28px;
+}
+    .topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 18px 20px;
+  text-decoration: none;
+  font-size: 21px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+    
+ h1 {
+color: black;
+font-size: 55px;
+font-weight: bold;
+
+}
+
+h2 {
+color: black;
+font-size: 20px;
+font-weight: normal;
+
+}
+    
+    
+    
+    
+</style>
+
+<header>
+    
+    <div class="topnav">
+        <div class="topnav">
+            <a class = "active" href="http://localhost:8000/create">Create New Items</a> 
+            <a href="http://localhost:8000/retire">Retire Old Items</a>
+            <a href="http://localhost:8000/search">Search</a>   
+           
+         </a>
+          
+          
+            
+              <!-- for the class="active" apply this to the actual page youre on.  -->
+        
+            
+        </div>
+            
+            
+            
+        </header>
+
+<body>
+    <h1>Search Results</h1>
+    {% for instance in object_list %}
+        <p><h2>
+            ID: {{instance.items_id}}<br>
+            Name: {{instance.items_name}}<br>
+            In Stock: {{instance.items_stock}}<br>
+            Sale Price: ${{instance.items_sale_price}}<br>
+            Department: {{instance.items_dept}}<br>
+            Minimum Stock: {{instance.items_min}}<br>
+            Cost To Us: ${{instance.items_cost}}<br><br><br></h2></p>
+    {% endfor %}
+</body>
+
+<div class="topnav">
+    <a href="http://localhost:8000/search">Search Again</a>      
+ </a>
