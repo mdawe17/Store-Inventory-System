@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+    input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    }
+
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    }
+
+    label {
+    font-size: 20px;
+    font-weight: 400;
+    }
+
+    div.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 670px;
+    text-align: center;
+    }
+
+    div.center2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 50px;
+    }
+
+    div.top-center {
+    font-size: 55px;
+    justify-content: center;
+    text-align: center;
+    }
+
+    form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 25%;
+    }
+    </style>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  </head>
+  <body style="background-color: khaki">
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+  <div class="container">
+    <div class="top-center">
+        <h1><b>Inventory Management Application</b></h1>
+    </div>
+        <div class="center">
+          <form class="form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+                  <fieldset>
+                    <div class="center2">
+                      <h3><b>Employee Login</b></h3><br>
+                    </div>
+                      <label for="username">Username:</label><br>
+                      <input type="text" id="username" name="username" placeholder="Enter Username"><br>
+                      <label for="pwd">Password:</label><br>
+                      <input type="password" id="pwd" name="password" placeholder="Enter Password"><br>
+                      <br>
+                      <input type="submit" class="btn" value="Login">
+                      <input type="hidden" name="next" value="{{ next }}">
+                  </fieldset>
+          </form>
+        </div>
+    </div>
+  </body>
+
+</html>
