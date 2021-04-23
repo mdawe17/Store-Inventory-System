@@ -32,6 +32,7 @@ def updateItems(request, pk):
         if form.is_valid():
             form.save()
             return redirect('/')
+        
 
     context = {'form' : form}
     return render(request,'update_items.html', context)
