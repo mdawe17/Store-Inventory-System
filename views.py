@@ -25,7 +25,7 @@ def loginPage(request):
     return render(request, 'login.html', context)
 
 def updateItems(request, pk):
-    item = Items.objects.get(Items_ID=pk)
+    item = Items.objects.get(Items_ID=pk) #Items_ID will need to be changed to items_id or whatever is in your models.py file
     form = ItemsForm(instance=item)
     if request.method == 'POST':
         form = ItemsForm(request.POST, instance=item)
@@ -36,5 +36,3 @@ def updateItems(request, pk):
     context = {'form' : form}
     return render(request,'update_items.html', context)
 
-def deleteItems(request,pk):
-    return render(request, 'delete_items.html', context)
