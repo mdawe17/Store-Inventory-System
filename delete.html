@@ -1,0 +1,38 @@
+
+{% load static %}
+{% block content %}
+
+
+<div class="topnav">
+    <a href="http://localhost:8000/home">Home</a>
+    <a href="http://localhost:8000/create">Create New Items</a>
+    <a class = "active" href="http://localhost:8000/retire">Retire Old Items</a>
+    <a href="http://localhost:8000/update">Edit Items</a>
+    <a href="http://localhost:8000/search">Search</a>
+    <a href="http://localhost:8000/">Sign Out</a>
+
+        <!-- for the class="active" apply this to the actual page youre on.  -->
+
+
+  </div>
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+
+			<h1>Are you sure you want to delete "{{item.items_name}}"?</h1>
+
+			<form action="{% url 'retire' item.items_id  %}" method="POST">
+				
+				{% csrf_token %}
+				<a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+
+				<input class="btn btn-danger" type="submit" name="Confirm">
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
