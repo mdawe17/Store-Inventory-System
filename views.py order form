@@ -30,10 +30,10 @@ def updateOrder(request, pk):
 	return render(request, 'conceptualdesign/order_form.html', context)
 
 def deleteOrder(request, pk):
-	order = Order.objects.get(id=pk)
+	item = Items.objects.get(items_id=pk)
 	if request.method == "POST":
-		order.delete()
-		return redirect('/')
+		item.delete()
+		return redirect('/home')
 
-	context = {'item':order}
-	return render(request, 'conceptualdesign/delete.html', context)
+	context = {'item':item}
+	return render(request, 'storeinventorydb/delete.html', context)
